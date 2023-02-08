@@ -6,22 +6,22 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - PORT=8080
+        - PORT=80
         - LOG_LEVEL=DEBUG
         - MONGO_URI=mongodb+srv://challengeUser:WUMglwNBaydH8Yvu@challenge-xzwqd.mongodb.net/getircase-study?retryWrites=true
         - MONGO_DB=getircase-study
         - MONGO_COLLECTION=records
-        - REDIS_URL=redis://redis_local:6379
+        - REDIS_URL=redis://redis:6379
     container_name: app
     ports:
-      - 8080:8080
+      - 80:80
     depends_on:
       - redis
-    command: ["/usr/local/bin/waitforit", "-address=redis://redis_local:6379", "-timeout=20", "--", "/app"]
+    command: ["/usr/local/bin/waitforit", "-address=redis://redis:6379", "-timeout=20", "--", "/app"]
 
   redis:
     image: redis:alpine
-    container_name: redis_local
+    container_name: redis
     restart: unless-stopped
     ports:
       - 6378:6379
