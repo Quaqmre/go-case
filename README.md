@@ -6,7 +6,7 @@
 * GNU make (optional)
 ##### **_Mongo Search_**
 
-**URL** :   /records
+**URL** :   /fetch
 
 **Method** : POST
 
