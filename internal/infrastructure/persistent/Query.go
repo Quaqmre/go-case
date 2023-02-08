@@ -8,8 +8,8 @@ import (
 func QueryData(dq *DataQuery) mongo.Pipeline {
 	filterCreateDate := bson.D{{"$match", bson.D{
 		{"createdAt", bson.D{
-			{"$gte", dq.StartDate},
-			{"$lt", dq.EndDate},
+			{"$gte", dq.StartDate.Format("2006-01-01")},
+			{"$lt", dq.EndDate.Format("2006-01-01")},
 		}}}}}
 
 	project := bson.D{{"$project", bson.D{
